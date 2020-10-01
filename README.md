@@ -1,5 +1,5 @@
 # adrenaline
-Control your PC's RGB lighting with your Garmin/Apple watch heart rate monitor!
+Control your PC's RGB lighting with your smart watch heart rate monitor!
 
 Both color and pulse rate will be impacted. For example, if your heart rate is high, the light will pulse quickly and be a bright red color.
 
@@ -10,6 +10,7 @@ Both color and pulse rate will be impacted. For example, if your heart rate is h
 
 ### How to contribute
 Easy! Just open an issue or submit a pull request.
+Also, we have a project discord! Here's the link: https://discord.gg/53DUEm
 
 ### When will this project be available?
 For now, we don't have a timeline, but know we're working on it!
