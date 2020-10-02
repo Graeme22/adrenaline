@@ -45,6 +45,7 @@ app.post('/heartrate', (req, res) => {
     console.log(req.body)
     hearRate = req.body;
     start()
+    res.sendStatus(200)
 });
 
 
