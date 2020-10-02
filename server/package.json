@@ -1,0 +1,20 @@
+{
+  "name": "adrenaline-server",
+  "version": "0.0.1",
+  "description": "Server to handle heart rate input and sync rgb compontents in PC using openRGB SDK",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node": "^14.13.0",
+    "openrgb": "^0.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
