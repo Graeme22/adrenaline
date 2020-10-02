@@ -13,7 +13,10 @@
     "appDisplayName": "Adrenaline",
     "iconFile": "",
     "wipeColor": "#ffffff",
-    "requestedPermissions": ["access_heart_rate", "access_internet"],
+    "requestedPermissions": [
+      "access_heart_rate",
+      "access_internet"
+    ],
     "buildTargets": [
       "atlas",
       "vulcan"
