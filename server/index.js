@@ -39,7 +39,6 @@ const changeRGB = async (red, green = '0', blue = '0') => {
                 blue
             }
         });
-        console.log(colourForEachRgbZone)
         //Updates the RGB settings on the device
         await client.updateLeds(deviceId, colourForEachRgbZone);
     }
