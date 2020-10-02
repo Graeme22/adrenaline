@@ -8,8 +8,32 @@ const app = express()
 app.use(bodyParser.text());
 app.listen(3000) //Port for Express to listen to request on the localhost
 
+const rgbHeartRateCalculator = (heartRate) => {
+
+    const maxHr = 220;
+    const minHR = 60;
+    const rangeOfHearBeats = maxHr - minHR;
+    const constant = 35;
+    const colourConstant = (255 - constant) / rangeOfHearBeats;
+    const red = ((heartRate-minHR) * colourConstant) + constant;
+    const green = heartRate <= 127 ? 
+    ((((heartRate-minHR) * (colourConstant/2)) + (constant/((constant/100)*5.7))) - 10 )
+    :( 
+         61 - ((heartRate-minHR) * 0.82/2) + (constant/((constant/100)*7))
+        
+    );
+    const blue = 290 - (((heartRate-minHR) * colourConstant) + constant);
+    return {
+            //Using ES6 shorthand to declare object (See: Object Initialization From Variables - https://www.sitepoint.com/es6-enhanced-object-literals/)
+            red,
+            green,
+            blue,
+        }
+    }
+
+
 //Fucntion to change the RGB lighting, takes 3 inputs for RGB, from 0 - 225
-const changeRGB = async (red, green = '0', blue = '0') => {
+const changeRGB = async (data) => {
     //Sets up the OpenRGB client
     const client = new OpenRGBClient({
         host: "192.168.170.211", //the address where the OpenRGB server (the app) is running, if on same machine using http://localhost will be fine
@@ -32,15 +56,10 @@ const changeRGB = async (red, green = '0', blue = '0') => {
         //Loops through the array and sets the RGB value for each LED zone
         const colourForEachRgbZone = numberOfRgbZonesArray.map((colour) => {
             //Each zone requires an object with red, green, blue. takes a value from 0 - 255
-            return {
-                //Using ES6 shorthand to declare object (See: Object Initialization From Variables - https://www.sitepoint.com/es6-enhanced-object-literals/)
-                red,
-                green,
-                blue
-            }
+            return rgbHeartRateCalculator(data)
         });
         //Updates the RGB settings on the device
-        await client.updateLeds(deviceId, colourForEachRgbZone);
+        // await client.updateLeds(deviceId, colourForEachRgbZone);
     }
     //Close connection with OpenRGB server
     await client.disconnect();
