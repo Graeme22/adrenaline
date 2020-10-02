@@ -9,22 +9,22 @@ app.use(bodyParser.text());
 app.listen(3000) //Port for Express to listen to request on the localhost
 
 const rgbHeartRateCalculator = (heartRate) => {
-
-    const maxHr = 220;
-    const minHR = 60;
+    //Max and min heart rates, used to calculate the gradient of purple -> red
+    const maxHr = 220; 
+    const minHR = 60; 
     const rangeOfHearBeats = maxHr - minHR;
+
     const constant = 35;
     const colourConstant = (255 - constant) / rangeOfHearBeats;
     const red = ((heartRate-minHR) * colourConstant) + constant;
-    const green = heartRate <= 127 ? 
-    ((((heartRate-minHR) * (colourConstant/2)) + (constant/((constant/100)*5.7))) - 10 )
-    :( 
-         61 - ((heartRate-minHR) * 0.82/2) + (constant/((constant/100)*7))
-        
-    );
+    const green = heartRate <= 127 
+    ? ((((heartRate-minHR) * (colourConstant/2)) + (constant/((constant/100)*5.7))) - 10 )
+    : 61 - ((heartRate-minHR) * 0.82/2) + (constant/((constant/100)*7));
     const blue = 290 - (((heartRate-minHR) * colourConstant) + constant);
+
+    //Return Object of colours
     return {
-            //Using ES6 shorthand to declare object (See: Object Initialization From Variables - https://www.sitepoint.com/es6-enhanced-object-literals/)
+        //Using ES6 shorthand to declare object (See: Object Initialization From Variables - https://www.sitepoint.com/es6-enhanced-object-literals/)
             red,
             green,
             blue,
