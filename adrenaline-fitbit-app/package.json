@@ -1,0 +1,28 @@
+{
+  "name": "adrenaline",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@fitbit/sdk": "~5.0.1",
+    "@fitbit/sdk-cli": "^1.7.3"
+  },
+  "fitbit": {
+    "appUUID": "ca9c874b-8c94-4b70-a42c-57bfa6d09bbd",
+    "appType": "app",
+    "appDisplayName": "Adrenaline",
+    "iconFile": "",
+    "wipeColor": "#ffffff",
+    "requestedPermissions": ["access_heart_rate", "access_internet"],
+    "buildTargets": [
+      "atlas",
+      "vulcan"
+    ],
+    "i18n": {},
+    "defaultLanguage": "en-US"
+  },
+  "scripts": {
+    "build": "fitbit-build",
+    "debug": "fitbit"
+  }
+}
